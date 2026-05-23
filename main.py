@@ -1,20 +1,13 @@
 from fastapi import FastAPI
-from middleware.middleware import setup_cors
-from middleware.controller import voiceAgentController
+from midlleware.middleware import setup_cors
 app = FastAPI()
 setup_cors(app)
-from middleware.model import voiceAgent
-from fastapi.responses import StreamingResponse
-import io
 
 @app.post("/chatbot/voice/")
 async def rag(item: voiceAgent):
     try:
         response = voiceAgentController(item.base64,item.extension)
-        return StreamingResponse(
-            io.BytesIO(response),
-            media_type="audio/mpeg"
-        )
+        return {}
     except Exception as e:
         return {
             "error": str(e),
