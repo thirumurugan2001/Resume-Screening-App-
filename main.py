@@ -19,7 +19,6 @@ from app.Resume.resumeScreening import resumeScreening
 app = FastAPI()
 setup_cors(app)
 
-
 # TODO: Implement the home route logic
 @app.get("/")
 def home():
@@ -132,6 +131,5 @@ async def userResumeScreening(item: ResumeScreeningApp):
             "error": str(e),
             "statusCode": 500
         }
-    
     
 # python -m uvicorn main:app --reload
