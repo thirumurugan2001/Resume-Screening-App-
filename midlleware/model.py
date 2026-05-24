@@ -40,5 +40,6 @@ class deleteJD(BaseModel):
 
 # RESUME SCREENING
 class ResumeScreeningApp(BaseModel):
+    userID: str = field(..., example="user123")
     base64Resume : str = field(..., example="base64_encoded_resume")
     resumeExtension : str = field(..., example=".pdf")
